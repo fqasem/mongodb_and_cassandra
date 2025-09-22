@@ -20,79 +20,10 @@ Document-store databases, also known as document-oriented databases, store data 
 - Content management systems (CMS): CMS platforms like WordPress use document store databases for fast storage and access to content types such as articles, images, and user data. (MongoDB)
 - E-commerce: E-commerce platforms need effective management of product catalogs with diverse attributes and hierarchies, accommodating the dynamic nature of e-commerce product listings. (Couchbase or Amazon DocumentDB, using MongoDB compatibility)
 
-#Frequently mentioned vendors
--MongoDB
--Couchbase
--Amazon DocumentDB
-
-## Key-value stores
-Key-value stores are the simplest NoSQL databases, storing data as a collection of key-value pairs, where the key is unique and directly points to its associated value.
-
-# Characteristics
-- Delivers high performance: efficient for read and write operations, optimized for speedy retrieval based on keys
-- Provides scalability: easily scalable due to their simple structure and ability to distribute data across nodes
-- Uses caching for fast access
-- Provides session management
-- Works with distributed systems
-
-# Use cases:
-- Enhanced web performance by caching frequently accessed data (Using Redis or Memcached)
-- E-commerce platforms, software applications, including gaming: Amazon DynamoDB provides a highly scalable key-value store, facilitating distributed systems' seamless operation by handling high traffic and scaling dynamically.
-
 # Frequently mentioned vendors
--Redis
--Memcached
--Amazon DynamoDB
-
-
-## Column-family stores
-Definition: Column-family stores NoSQL databases, also referred to as columnar databases, organize data in columns rather than rows. These databases store columns of data together, making them efficient for handling large data sets with dynamic schemas.
-
-# Characteristics
-- Uses column-oriented storage: Data is grouped by columns rather than rows, allowing for efficient retrieval of specific columns.
-- Delivers scalability: Distributed architecture for high availability and scalability.
-
-# Use cases
-- IoT applications manage massive amounts of sensor data efficiently due to their ability to handle time-stamped data at scale, referred to as time-series data analysis. (Apache Cassandra)
-- Applications that store and analyze user preferences and behaviors usually deliver personalization. (HBase, part of the Hadoop ecosystem)
-- Large-scale data analysis.
-
-# Frequently mentioned vendors
--Apache Cassandra
--HBase
-
-## Graph databases:
-Definition: Graph NoSQL databases are designed to manage highly interconnected data, representing relationships as first-class citizens alongside nodes and properties.
-
-# Characteristics:
-Analyzes the data using a graph data model: relationships are as important as the data itself, enabling efficient traversal and querying of complex relationships.
-Fast performance for relationship queries: optimized for queries involving relationships, making them ideal for social networks, recommendation systems, and network analysis.
-
-# Use cases:
-- Social networks require efficient data management of relationships between users, posts, comments, and likes. (Neo4j)
-- Recommendation systems: Organizations need a database structure that can create sophisticated recommendation engines, analyzing complex relationships between users, products, and behaviors for precise recommendations. (Amazon Neptune)
-
-# Frequently mentioned vendors
--Neo4j
--Amazon Neptune
--ArangoDB Memcached
-
-
-## Wide-column stores:
-Wide-column store NoSQL databases organize data in tables, rows, and columns, like relational databases, but with a flexible schema.
-
-# Characteristics:
-Use columnar storage: Data is stored in columns, allowing for efficient retrieval of specific columns rather than entire rows.
-Provide horizontal scalability and fault tolerance.
-
-# Use cases:
-- Analyzing big data: Efficiently handling large-scale data processing for real-time big data analytics. (Apache HBase used in conjunction with Hadoop)
-- Managing enterprise content: Large organizations databases need to manage vast amounts of structured data like employee records or inventory due. (Cassandra)
-
-# Frequently mentioned vendors
--Apache HBase
--Apache Cassandra
-
+- MongoDB
+- Couchbase
+- Amazon DocumentDB
 
 ## Expanded use case example: 
 
@@ -161,6 +92,75 @@ As your CMS grows, MongoDB can help you scale. You can use sharding for horizont
 # Using sharding for horizontal scaling (increased capacity)
 Let's consider a company that currently has 100 million customers. This company expects to expand its customer base to 200 million customers. This increase in the number of customers means that the company will need to double its IT data storage hardware. The company can scale vertically, which can cost exponentially more as the hardware cost isn't linear with the performance. The following diagram shows that the company can scale horizontally and use sharding to manage the databases.
 
+
+
+## Key-value stores
+Key-value stores are the simplest NoSQL databases, storing data as a collection of key-value pairs, where the key is unique and directly points to its associated value.
+
+# Characteristics
+- Delivers high performance: efficient for read and write operations, optimized for speedy retrieval based on keys
+- Provides scalability: easily scalable due to their simple structure and ability to distribute data across nodes
+- Uses caching for fast access
+- Provides session management
+- Works with distributed systems
+
+# Use cases:
+- Enhanced web performance by caching frequently accessed data (Using Redis or Memcached)
+- E-commerce platforms, software applications, including gaming: Amazon DynamoDB provides a highly scalable key-value store, facilitating distributed systems' seamless operation by handling high traffic and scaling dynamically.
+
+# Frequently mentioned vendors
+- Redis
+- Memcached
+- Amazon DynamoDB
+
+
+## Column-family stores
+Definition: Column-family stores NoSQL databases, also referred to as columnar databases, organize data in columns rather than rows. These databases store columns of data together, making them efficient for handling large data sets with dynamic schemas.
+
+# Characteristics
+- Uses column-oriented storage: Data is grouped by columns rather than rows, allowing for efficient retrieval of specific columns.
+- Delivers scalability: Distributed architecture for high availability and scalability.
+
+# Use cases
+- IoT applications manage massive amounts of sensor data efficiently due to their ability to handle time-stamped data at scale, referred to as time-series data analysis. (Apache Cassandra)
+- Applications that store and analyze user preferences and behaviors usually deliver personalization. (HBase, part of the Hadoop ecosystem)
+- Large-scale data analysis.
+
+# Frequently mentioned vendors
+- Apache Cassandra
+- HBase
+
+## Graph databases:
+Definition: Graph NoSQL databases are designed to manage highly interconnected data, representing relationships as first-class citizens alongside nodes and properties.
+
+# Characteristics:
+Analyzes the data using a graph data model: relationships are as important as the data itself, enabling efficient traversal and querying of complex relationships.
+Fast performance for relationship queries: optimized for queries involving relationships, making them ideal for social networks, recommendation systems, and network analysis.
+
+# Use cases:
+- Social networks require efficient data management of relationships between users, posts, comments, and likes. (Neo4j)
+- Recommendation systems: Organizations need a database structure that can create sophisticated recommendation engines, analyzing complex relationships between users, products, and behaviors for precise recommendations. (Amazon Neptune)
+
+# Frequently mentioned vendors
+- Neo4j
+- Amazon Neptune
+- ArangoDB Memcached
+
+
+## Wide-column stores:
+Wide-column store NoSQL databases organize data in tables, rows, and columns, like relational databases, but with a flexible schema.
+
+# Characteristics:
+Use columnar storage: Data is stored in columns, allowing for efficient retrieval of specific columns rather than entire rows.
+Provide horizontal scalability and fault tolerance.
+
+# Use cases:
+- Analyzing big data: Efficiently handling large-scale data processing for real-time big data analytics. (Apache HBase used in conjunction with Hadoop)
+- Managing enterprise content: Large organizations databases need to manage vast amounts of structured data like employee records or inventory due. (Cassandra)
+
+# Frequently mentioned vendors
+- Apache HBase
+- Apache Cassandra
 
 
 ## Vector Databases
