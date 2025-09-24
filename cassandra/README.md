@@ -26,6 +26,11 @@ Cassandra stores data in tables whose schema defines the storage of the data at 
 
 A keyspace is a logical entity that contains one or more tables. A keyspace also defines a number of options thatapplies to all the tables it contains, most prominent of which is the replication strategy used by the key space.
 
+![Logical tables and keyspace image](images/logical%20entities%20-%20tables%20and%20keyspaces.png)
+
+
+![Logical tables image](cassandra/images/logical entities - tables.png)
+
 It is generally encouraged to use one keyspace per application. So tables are the logical entities that organize data storage at cluster and node level. They contain rows of columns.
 
 You can create, drop, and alter your tables without impacting the running updates on your data or the running queries.
@@ -56,13 +61,12 @@ You should build your primary key based on your queries, and the second role is 
 
 A primary key has two components. The mandatory component is called the partition key, and optionally you can have one or more clustering keys.
 
-![Logical tables and keyspace image](images/logical%20entities%20-%20tables%20and%20keyspaces.png)
-
 When data is inserted into the cluster in a table, the data is grouped per partition key into partitions, and the first step is to apply a hash function to the partition key.
 
 The partition key hash is used to determine what node and subsequent replicas will get the data.
 
 In simpler terms, a partition key determines the data locality in the cluster.
+
 
 You can see in the diagram and table that data is grouped according to the partition key, groupid, and that each partition is distributed to one of the cluster nodes.
 
@@ -81,8 +85,6 @@ This user's table is a **static table**.
 As you can see, the primary key consists only of the partition. This means that the number of distinct users we will have is the number of partitions we will have in our table.
 
 In static tables, partitions have only one entry and thus are called static partitions.
-
-![Logical Entities](images/logical%20entities%20-%20tables%20and%20keyspaces.png")
 
 Let's move on with our Cassandra data modeling journey, having already introduced the primary key, the role of the partition key, and the definition of static tables.
 
