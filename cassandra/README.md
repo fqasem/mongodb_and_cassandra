@@ -29,7 +29,7 @@ A keyspace is a logical entity that contains one or more tables. A keyspace also
 ![Logical tables and keyspace image](images/logical%20entities%20-%20tables%20and%20keyspaces.png)
 
 
-![Logical tables image](cassandra/images/logical entities - tables.png)
+![Logical tables image](images/logical entities - tables.png)
 
 It is generally encouraged to use one keyspace per application. So tables are the logical entities that organize data storage at cluster and node level. They contain rows of columns.
 
