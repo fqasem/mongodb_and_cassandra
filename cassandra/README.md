@@ -46,7 +46,7 @@ You can see that the primary key is composed of two columns, groupid and usernam
 
 In Cassandra denomination, the groupid column is called the partition key and the username column is called the clustering key.
 
-![Partition key and clustering key image](images/logical%20entities%20-%20tables.png)
+![Partition key and clustering key image](images/partition%20key%20and%20clustering%20key.png)
 
 Let's talk a bit more about the primary key.
 
