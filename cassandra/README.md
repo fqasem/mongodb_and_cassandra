@@ -56,7 +56,7 @@ You should build your primary key based on your queries, and the second role is 
 
 A primary key has two components. The mandatory component is called the partition key, and optionally you can have one or more clustering keys.
 
-https://github.com/fqasem/mongodb_and_cassandra/blob/main/cassandra/images/logical%20entities%20-%20tables%20and%20keyspaces.png
+![Logical tables and keyspace image](images/logical%20entities%20-%20tables%20and%20keyspaces.png)
 
 When data is inserted into the cluster in a table, the data is grouped per partition key into partitions, and the first step is to apply a hash function to the partition key.
 
