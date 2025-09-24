@@ -81,7 +81,8 @@ This user's table is a **static table**.
 As you can see, the primary key consists only of the partition. This means that the number of distinct users we will have is the number of partitions we will have in our table.
 
 In static tables, partitions have only one entry and thus are called static partitions.
-<img src="images/logical%20entities%20-%20tables%20and%20keyspaces.png" raw=true/>
+
+![Logical Entities](images/logical%20entities%20-%20tables%20and%20keyspaces.png")
 
 Let's move on with our Cassandra data modeling journey, having already introduced the primary key, the role of the partition key, and the definition of static tables.
 
