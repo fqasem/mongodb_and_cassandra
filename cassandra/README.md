@@ -46,6 +46,8 @@ You can see that the primary key is composed of two columns, groupid and usernam
 
 In Cassandra denomination, the groupid column is called the partition key and the username column is called the clustering key.
 
+![Partition key and clustering key image](images/logical%20entities%20-%20tables.png)
+
 Let's talk a bit more about the primary key.
 
 First of all, the primary key is basically a subset of the table's declared columns.
@@ -60,6 +62,8 @@ Do not forget that the NoSQL systems are query driven data modeling systems, mea
 
 You should build your primary key based on your queries, and the second role is to provide uniqueness to the queries.
 
+![Primary key image](images/primary%20key.png)
+
 A primary key has two components. The mandatory component is called the partition key, and optionally you can have one or more clustering keys.
 
 When data is inserted into the cluster in a table, the data is grouped per partition key into partitions, and the first step is to apply a hash function to the partition key.
@@ -68,6 +72,7 @@ The partition key hash is used to determine what node and subsequent replicas wi
 
 In simpler terms, a partition key determines the data locality in the cluster.
 
+![Partition keys image](images/partition%20keys.png)
 
 You can see in the diagram and table that data is grouped according to the partition key, groupid, and that each partition is distributed to one of the cluster nodes.
 
@@ -83,13 +88,15 @@ When the table has the primary key composed of both partition key or keys, and c
 
 This user's table is a **static table**.
 
+![Table types image](images/table%20types%20-%20static%20and%20dynamic.png)
+![Static tables image](images/static%20tables.png)
+![Dynamic tables image](images/dynamic%20tables.png)
+
 As you can see, the primary key consists only of the partition. This means that the number of distinct users we will have is the number of partitions we will have in our table.
 
 In static tables, partitions have only one entry and thus are called static partitions.
 
-Let's move on with our Cassandra data modeling journey, having already introduced the primary key, the role of the partition key, and the definition of static tables.
-
-After the following discussion, you will be able to explain what cluster string keys are, describe dynamic tables, and explain the basic guidelines for modeling your data.
+Let's move on with our discussion on cluster string keys, dynamic tables, and basic guidelines for modeling your data.
 
 In red, you can see that the second component of the primary key is called the clustering key. While the partition key is important for data locality, the clustering column specifies the order that the data is arranged in inside the partition that is, ascending or descending, and optimizes the retrieval of similar values column data inside a partition.
 
@@ -101,12 +108,16 @@ The next part of this discussion will illustrate this point.
 
 Let's assume we would like an answer to the query: Give me all users in group ID 12 that are aged 32.In this case, one of the possible data models for answering such a query is to have a table with group ID as the partition key and age and username as clustering keys.
 
+![Dynamic table query image](images/dynamic%20tables%20-%20clustering%20key%20query%20example.png)
+
 Data inside each partition is first grouped and ordered by age, and inside each age group it is then grouped by username. So in this case, all users in a certain group that have the same age will be stored together. Thus, a query such as give me all users in a certain group by group ID that are aged 32 will just locate the node that contains the partition for
 group 12 and read from that node just the two sequential records.
 
 Reducing the amount of data to be read from a partition is crucial for query time, especially in the case of large partitions in which Cassandra would have to read hundreds of megabytes of data in order to provide an answer from just a few kilobytes of data.
 
 Let's insert a new entry in a dynamic table like groups. Inserting new data in our table will just direct the write to the location of the partition and will increase the partition size from two to three entries.
+
+![Dynamic table insert image](images/dynamic%20table%20-%20insert.png)
 
 In dynamic tables, partitions grow dynamically with the number of distinct entries due to the presence of the clustering key in the primary key. It's important to note that in this diagram, replication is not taken into account, so only one node holds the partition for group 45 for example.
 
