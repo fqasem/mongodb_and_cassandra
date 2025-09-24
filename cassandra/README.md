@@ -56,6 +56,8 @@ You should build your primary key based on your queries, and the second role is 
 
 A primary key has two components. The mandatory component is called the partition key, and optionally you can have one or more clustering keys.
 
+https://github.com/fqasem/mongodb_and_cassandra/blob/main/cassandra/images/logical%20entities%20-%20tables%20and%20keyspaces.png
+
 When data is inserted into the cluster in a table, the data is grouped per partition key into partitions, and the first step is to apply a hash function to the partition key.
 
 The partition key hash is used to determine what node and subsequent replicas will get the data.
@@ -79,6 +81,7 @@ This user's table is a **static table**.
 As you can see, the primary key consists only of the partition. This means that the number of distinct users we will have is the number of partitions we will have in our table.
 
 In static tables, partitions have only one entry and thus are called static partitions.
+<img src="images/logical%20entities%20-%20tables%20and%20keyspaces.png" raw=true/>
 
 Let's move on with our Cassandra data modeling journey, having already introduced the primary key, the role of the partition key, and the definition of static tables.
 
