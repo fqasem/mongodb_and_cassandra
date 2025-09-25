@@ -1,0 +1,93 @@
+
+Final Project:
+=============
+
+curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-DB0151EN-edX/labs/FinalProject/movies.json
+
+Task 1:
+
+mongoimport -u root -p g0EyGOGnsbAwZNDMXMAPYdn3 --authenticationDatabase admin --db entertainment --collection movies --file /home/project/movies.json --host mongo
+
+
+Task 2:
+
+db.movies.aggregate([
+{
+ "$group":{
+ "_id":"$year",
+ "moviecount":{"$sum":1}
+ }
+},
+{
+ "$sort":{"moviecount":-1}
+},
+{
+ "$limit":1
+}
+])
+
+Task 3:
+
+db.movies.countDocuments({year:{$gt:1999}})
+
+Task 4:
+
+
+db.movies.aggregate([
+{
+ "$match":{ year:2007 }
+},
+{
+"$group":{
+ "_id":"$year",
+ averageVotes:{"$avg":"$Votes"}
+ }
+}
+])
+
+Task 5:
+
+mongoexport -u root -p g0EyGOGnsbAwZNDMXMAPYdn3 --authenticationDatabase admin --db entertainment --collection movies --type=csv --out partial_data.csv --fields _id,title,year,rating,director --host mongo
+
+Task 6:
+
+CREATE KEYSPACE entertainment
+WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+
+Task 7:
+
+CREATE TABLE movies(
+ id varchar PRIMARY KEY,
+ title text,
+ year text,
+ rating text,
+ director text
+);
+
+COPY entertainment.movies(id,title,year,rating,director) FROM '/home/project/partial_data.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+
+
+Task 8:
+
+select count(*) from movies;
+
+Task 9:
+
+CREATE INDEX IF NOT EXISTS index_name
+ON keyspace.table_name ( column_name )  
+
+create index if not exists rating_index on movies(rating);
+
+
+create index price_index on diamonds(price);
+
+
+
+
+
+
+
+
+
+
+
